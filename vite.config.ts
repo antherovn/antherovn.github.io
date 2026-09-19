@@ -11,5 +11,8 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    // Prerender to static HTML so the site works on static hosts (GitHub Pages)
+    // without needing the Cloudflare Worker to run.
+    prerender: { enabled: true },
   },
 });
