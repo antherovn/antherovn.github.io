@@ -12,11 +12,11 @@ import {
 import { useEffect, useState } from "react";
 
 import portraitAsset from "@/assets/anthero-professional-portrait.png";
-import casualPortraitAsset from "@/assets/anthero-casual.jpeg.asset.json";
-import meuwattAsset from "@/assets/meuwatt.jpg.asset.json";
-import mouraverseAsset from "@/assets/mouraverse.jpg.asset.json";
-import nexoAsset from "@/assets/nexo.jpg.asset.json";
-import theroAsset from "@/assets/thero.jpg.asset.json";
+import casualPortraitAsset from "@/assets/anthero-casual.jpeg";
+import meuwattAsset from "@/assets/meuwatt.jpg";
+import mouraverseAsset from "@/assets/mouraverse.jpg";
+import nexoAsset from "@/assets/nexo.jpg";
+import theroAsset from "@/assets/thero.jpg";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -86,7 +86,7 @@ const content = {
           "Uma plataforma de monitoramento que centraliza desempenho energético e dá visibilidade operacional às usinas.",
         stack: ["Arquitetura", "Tempo real", "Webhooks", "SaaS"],
         href: "https://www.meuwatt.com.br/",
-        image: meuwattAsset.url,
+        image: meuwattAsset,
         imageAlt: "Tela do MeuWatt para monitoramento solar industrial",
       },
       {
@@ -113,7 +113,7 @@ const content = {
           "Um aplicativo desktop que observa, entende e organiza arquivos localmente, com uma interface única de acompanhamento.",
         stack: ["Electron", "React 19", "FastAPI", "IA local"],
         href: "https://get-nexo.vercel.app/",
-        image: nexoAsset.url,
+        image: nexoAsset,
         imageAlt: "Página do Nexo, organizador local de arquivos com inteligência artificial",
       },
       {
@@ -128,7 +128,7 @@ const content = {
           "Um ambiente reutilizável com geração de sistema, indexação, agentes especializados e mudanças verificáveis.",
         stack: ["Python", "Claude Code", "Agent skills", "Open source"],
         href: "https://netovieira.github.io/thero/",
-        image: theroAsset.url,
+        image: theroAsset,
         imageAlt: "Página da suíte Thero para Claude Code",
       },
       {
@@ -143,7 +143,7 @@ const content = {
           "RAG recursivo que preserva a hierarquia do conhecimento e dá contexto especializado aos agentes Athena e Zeus.",
         stack: ["RAG", "Multiagentes", "TypeScript", "Python", "Kubernetes"],
         href: "https://avnt.notion.site/MOURAVERSE-18833d256cec80ce92f5cd45a6a4b4d8",
-        image: mouraverseAsset.url,
+        image: mouraverseAsset,
         imageAlt: "Documentação pública do projeto Mouraverse",
       },
     ],
@@ -253,7 +253,7 @@ const content = {
           "A monitoring platform that centralizes energy performance and gives solar plants operational visibility.",
         stack: ["Architecture", "Real time", "Webhooks", "SaaS"],
         href: "https://www.meuwatt.com.br/",
-        image: meuwattAsset.url,
+        image: meuwattAsset,
         imageAlt: "MeuWatt industrial solar monitoring interface",
       },
       {
@@ -280,7 +280,7 @@ const content = {
           "A desktop app that observes, understands, and organizes files locally through a single monitoring interface.",
         stack: ["Electron", "React 19", "FastAPI", "Local AI"],
         href: "https://get-nexo.vercel.app/",
-        image: nexoAsset.url,
+        image: nexoAsset,
         imageAlt: "Nexo local AI file organizer website",
       },
       {
@@ -295,7 +295,7 @@ const content = {
           "A reusable environment with system generation, indexing, specialist agents, and verifiable changes.",
         stack: ["Python", "Claude Code", "Agent skills", "Open source"],
         href: "https://netovieira.github.io/thero/",
-        image: theroAsset.url,
+        image: theroAsset,
         imageAlt: "Thero suite for Claude Code website",
       },
       {
@@ -310,7 +310,7 @@ const content = {
           "Recursive RAG that preserves knowledge hierarchy and gives specialized context to Athena and Zeus agents.",
         stack: ["RAG", "Multi-agent", "TypeScript", "Python", "Kubernetes"],
         href: "https://avnt.notion.site/MOURAVERSE-18833d256cec80ce92f5cd45a6a4b4d8",
-        image: mouraverseAsset.url,
+        image: mouraverseAsset,
         imageAlt: "Public Mouraverse project documentation",
       },
     ],
@@ -488,7 +488,7 @@ function Portfolio() {
       </section>
 
       <section id="trajetoria" className="scroll-mt-20 border-y border-border bg-secondary/60 py-24 sm:py-32">
-        <div className="page-shell grid gap-16 lg:grid-cols-12"><div className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start"><p className="section-eyebrow">{copy.journeyEyebrow}</p><h2 className="mt-6 font-display text-5xl font-semibold leading-tight">{copy.journeyTitle}</h2><p className="mt-6 text-muted-foreground">{copy.journeyIntro}</p><figure className="casual-portrait mt-10 max-w-sm overflow-hidden border border-border"><img src={casualPortraitAsset.url} alt={language === "pt" ? "Anthero em um momento descontraído" : "Anthero in a casual moment"} loading="lazy" className="aspect-[4/3] w-full object-cover object-[center_57%]" /><figcaption className="flex items-center justify-between border-t border-border bg-background px-4 py-3 text-[10px] uppercase text-muted-foreground"><span>{language === "pt" ? "Fora do escritório" : "Off the clock"}</span><span>SP · BR</span></figcaption></figure></div><div className="lg:col-span-8">{copy.timeline.map((item, index) => <article key={item.title} className="timeline-row grid gap-5 border-t border-border py-8 sm:grid-cols-[5rem_1fr]"><span className="text-xs text-accent">0{index + 1}</span><div><div className="flex flex-wrap items-baseline justify-between gap-3"><h3 className="text-2xl font-semibold">{item.title}</h3><span className="text-xs uppercase text-muted-foreground">{item.marker}</span></div><p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">{item.text}</p></div></article>)}</div></div>
+        <div className="page-shell grid gap-16 lg:grid-cols-12"><div className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start"><p className="section-eyebrow">{copy.journeyEyebrow}</p><h2 className="mt-6 font-display text-5xl font-semibold leading-tight">{copy.journeyTitle}</h2><p className="mt-6 text-muted-foreground">{copy.journeyIntro}</p><figure className="casual-portrait mt-10 max-w-sm overflow-hidden border border-border"><img src={casualPortraitAsset} alt={language === "pt" ? "Anthero em um momento descontraído" : "Anthero in a casual moment"} loading="lazy" className="aspect-[4/3] w-full object-cover object-[center_57%]" /><figcaption className="flex items-center justify-between border-t border-border bg-background px-4 py-3 text-[10px] uppercase text-muted-foreground"><span>{language === "pt" ? "Fora do escritório" : "Off the clock"}</span><span>SP · BR</span></figcaption></figure></div><div className="lg:col-span-8">{copy.timeline.map((item, index) => <article key={item.title} className="timeline-row grid gap-5 border-t border-border py-8 sm:grid-cols-[5rem_1fr]"><span className="text-xs text-accent">0{index + 1}</span><div><div className="flex flex-wrap items-baseline justify-between gap-3"><h3 className="text-2xl font-semibold">{item.title}</h3><span className="text-xs uppercase text-muted-foreground">{item.marker}</span></div><p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">{item.text}</p></div></article>)}</div></div>
       </section>
 
       <section id="metodo" className="scroll-mt-20 py-24 sm:py-32"><div className="page-shell"><SectionHeader eyebrow={copy.approachEyebrow} title={copy.approachTitle} intro={copy.signalBody} /><div className="mt-16 grid gap-px bg-border md:grid-cols-3">{copy.principles.map((principle) => <article key={principle.number} className="bg-background p-7 sm:p-9"><span className="text-xs text-accent">{principle.number}</span><h3 className="mt-16 text-xl font-semibold">{principle.title}</h3><p className="mt-4 text-sm leading-relaxed text-muted-foreground">{principle.text}</p></article>)}</div><div className="mt-20 border-t border-border pt-7"><p className="section-eyebrow">{copy.stackEyebrow}</p><div className="mt-8 flex flex-wrap gap-3">{copy.stack.map((item) => <span key={item} className="inline-flex items-center gap-2 border border-border bg-secondary px-4 py-3 text-xs text-muted-foreground"><Check size={13} className="text-accent" />{item}</span>)}</div></div></div></section>
