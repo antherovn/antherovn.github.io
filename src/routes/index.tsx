@@ -69,7 +69,7 @@ const content = {
     projectsIntro:
       "Uma seleção de plataformas, ferramentas e sistemas que unem profundidade técnica a uma experiência clara.",
     visit: "Visitar projeto",
-    privateProject: "Projeto em desenvolvimento",
+    privateProject: "Projeto privado",
     problem: "Contexto",
     contribution: "Contribuição",
     solution: "Sistema",
@@ -114,7 +114,7 @@ const content = {
         stack: ["Electron", "React 19", "FastAPI", "IA local"],
         href: "https://get-nexo.vercel.app/",
         image: nexoAsset,
-        imageAlt: "Página do Nexo, organizador local de arquivos com inteligência artificial",
+        imageAlt: "Captura do Nexo, organizador local de arquivos com IA, com a mensagem \"Sua pasta Downloads sempre vazia.\"",
       },
       {
         name: "Thero",
@@ -129,7 +129,7 @@ const content = {
         stack: ["Python", "Claude Code", "Agent skills", "Open source"],
         href: "https://netovieira.github.io/thero/",
         image: theroAsset,
-        imageAlt: "Página da suíte Thero para Claude Code",
+        imageAlt: "Captura da suíte Thero para Claude Code, com a mensagem \"Seu Claude Code. Pronto para trabalho sério.\"",
       },
       {
         name: "Mouraverse",
@@ -236,7 +236,7 @@ const content = {
     projectsIntro:
       "A selection of platforms, tools, and systems combining technical depth with a clear experience.",
     visit: "Visit project",
-    privateProject: "Work in progress",
+    privateProject: "Private project",
     problem: "Context",
     contribution: "Contribution",
     solution: "System",
@@ -281,7 +281,7 @@ const content = {
         stack: ["Electron", "React 19", "FastAPI", "Local AI"],
         href: "https://get-nexo.vercel.app/",
         image: nexoAsset,
-        imageAlt: "Nexo local AI file organizer website",
+        imageAlt: "Screenshot of Nexo, the local AI file organizer, showing an in-app headline about an always-empty Downloads folder",
       },
       {
         name: "Thero",
@@ -296,7 +296,7 @@ const content = {
         stack: ["Python", "Claude Code", "Agent skills", "Open source"],
         href: "https://netovieira.github.io/thero/",
         image: theroAsset,
-        imageAlt: "Thero suite for Claude Code website",
+        imageAlt: "Screenshot of the Thero suite for Claude Code, showing an in-app headline about being ready for serious work",
       },
       {
         name: "Mouraverse",
@@ -411,7 +411,7 @@ function Portfolio() {
   ] as const;
 
   return (
-    <main className="min-h-screen overflow-hidden bg-background text-foreground">
+    <>
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
         <div className="page-shell flex h-20 items-center justify-between">
           <a href="#inicio" className="group flex items-center gap-4" aria-label="Anthero Vieira Neto">
@@ -432,6 +432,8 @@ function Portfolio() {
         </div>
         {menuOpen && <nav className="border-t border-border bg-background px-5 py-5 lg:hidden" aria-label="Menu móvel">{navItems.map(([label, href], index) => <a key={href} href={href} onClick={() => setMenuOpen(false)} className="flex items-center gap-4 border-b border-border py-4 text-lg"><span className="text-xs text-accent">0{index + 1}</span>{label}</a>)}</nav>}
       </header>
+
+      <main className="min-h-screen overflow-hidden bg-background text-foreground">
 
       <section id="inicio" className="relative min-h-[92svh] pt-20">
         <div className="pointer-events-none absolute inset-0 technical-grid" />
@@ -474,7 +476,7 @@ function Portfolio() {
           <SectionHeader eyebrow={copy.projectsEyebrow} title={copy.projectsTitle} intro={copy.projectsIntro} />
           <div className="project-grid mt-16 sm:mt-24">
             {copy.projects.map((project, index) => (
-              <article key={project.name} className={`project-card group ${index === 0 || index === 3 ? "project-wide" : ""}`}>
+              <article key={project.name} className="project-card group">
                 {"image" in project && project.image ? <img src={project.image} alt={project.imageAlt} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.025] group-hover:opacity-55" /> : <div className="jurisuit-art absolute inset-0 bg-primary"><Braces className="absolute left-7 top-7 text-accent" size={34} /></div>}
                 <div className="project-shade absolute inset-0" />
                 <div className="relative flex h-full flex-col justify-between p-6 sm:p-8">
@@ -493,8 +495,11 @@ function Portfolio() {
 
       <section id="metodo" className="scroll-mt-20 py-24 sm:py-32"><div className="page-shell"><SectionHeader eyebrow={copy.approachEyebrow} title={copy.approachTitle} intro={copy.signalBody} /><div className="mt-16 grid gap-px bg-border md:grid-cols-3">{copy.principles.map((principle) => <article key={principle.number} className="bg-background p-7 sm:p-9"><span className="text-xs text-accent">{principle.number}</span><h3 className="mt-16 text-xl font-semibold">{principle.title}</h3><p className="mt-4 text-sm leading-relaxed text-muted-foreground">{principle.text}</p></article>)}</div><div className="mt-20 border-t border-border pt-7"><p className="section-eyebrow">{copy.stackEyebrow}</p><div className="mt-8 flex flex-wrap gap-3">{copy.stack.map((item) => <span key={item} className="inline-flex items-center gap-2 border border-border bg-secondary px-4 py-3 text-xs text-muted-foreground"><Check size={13} className="text-accent" />{item}</span>)}</div></div></div></section>
 
-      <section id="contato" className="scroll-mt-20 border-t border-border py-24 sm:py-36"><div className="page-shell"><p className="section-eyebrow">{copy.contactEyebrow}</p><div className="mt-10 grid gap-14 lg:grid-cols-12 lg:items-end"><h2 className="text-balance font-display text-5xl font-semibold leading-[0.98] sm:text-7xl lg:col-span-8">{copy.contactTitle}</h2><div className="lg:col-span-4"><p className="text-muted-foreground">{copy.contactText}</p><div className="mt-8 flex flex-wrap gap-3"><a href="https://www.linkedin.com/in/anthero-vieira-neto-aa7a6b8a" target="_blank" rel="noreferrer" className="contact-link bg-accent text-accent-foreground"><Linkedin size={17} />{copy.linkedin}</a><a href="https://github.com/netovieira" target="_blank" rel="noreferrer" className="contact-link border border-border"><Github size={17} />{copy.github}</a></div></div></div><footer className="mt-28 flex flex-col gap-5 border-t border-border pt-7 text-[10px] uppercase text-muted-foreground sm:flex-row sm:items-center sm:justify-between"><div className="flex items-center gap-4"><AvntMark /><span>© {new Date().getFullYear()} Anthero Vieira Neto</span></div><span>{copy.footer}</span></footer></div></section>
-    </main>
+      <section id="contato" className="scroll-mt-20 border-t border-border py-24 sm:py-36"><div className="page-shell"><p className="section-eyebrow">{copy.contactEyebrow}</p><div className="mt-10 grid gap-14 lg:grid-cols-12 lg:items-end"><h2 className="text-balance font-display text-5xl font-semibold leading-[0.98] sm:text-7xl lg:col-span-8">{copy.contactTitle}</h2><div className="lg:col-span-4"><p className="text-muted-foreground">{copy.contactText}</p><div className="mt-8 flex flex-wrap gap-3"><a href="https://www.linkedin.com/in/anthero-vieira-neto-aa7a6b8a" target="_blank" rel="noreferrer" className="contact-link bg-accent text-accent-foreground"><Linkedin size={17} />{copy.linkedin}</a><a href="https://github.com/netovieira" target="_blank" rel="noreferrer" className="contact-link border border-border"><Github size={17} />{copy.github}</a></div></div></div></div></section>
+      </main>
+
+      <footer className="border-t border-border bg-background py-10"><div className="page-shell flex flex-col gap-5 text-[10px] uppercase text-muted-foreground sm:flex-row sm:items-center sm:justify-between"><div className="flex items-center gap-4"><AvntMark /><span>© {new Date().getFullYear()} Anthero Vieira Neto</span></div><span>{copy.footer}</span></div></footer>
+    </>
   );
 }
 
