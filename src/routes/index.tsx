@@ -3,6 +3,7 @@ import {
   ArrowDown,
   ArrowUpRight,
   Check,
+  Clock,
   Github,
   Linkedin,
   Mail,
@@ -293,8 +294,20 @@ const content = {
     contactTitle: "Vamos construir algo que valha a pena?",
     contactText:
       "Estou sempre aberto a boas conversas sobre produtos ambiciosos, arquitetura de software e inteligência artificial aplicada.",
+    contactAvailability: "Disponível para novos projetos",
+    contactResponse: "Respondo em até 24 horas",
+    contactChannelsTitle: "Canais diretos",
+    contactEmailNote: "A melhor forma de me alcançar — projetos, parcerias e consultoria.",
+    contactLinkedinNote: "Oportunidades, colaborações e conversas de carreira.",
+    contactGithubNote: "Código aberto, experimentos e tudo que estou construindo.",
     linkedin: "Conversar no LinkedIn",
     github: "Ver GitHub",
+    footerTagline:
+      "Engenheiro de software com visão de produto — arquitetura, DevOps e inteligência aplicada, do desenho à operação.",
+    footerNavTitle: "Navegação",
+    footerEcosystemTitle: "Ecossistema",
+    footerContactTitle: "Contato",
+    footerInDevelopment: "Em desenvolvimento",
     footer: "Projetado e construído com intenção.",
   },
   en: {
@@ -532,8 +545,20 @@ const content = {
     contactTitle: "Shall we build something worthwhile?",
     contactText:
       "I am always open to thoughtful conversations about ambitious products, software architecture, and applied artificial intelligence.",
+    contactAvailability: "Available for new projects",
+    contactResponse: "I reply within 24 hours",
+    contactChannelsTitle: "Direct channels",
+    contactEmailNote: "The best way to reach me — projects, partnerships, and consulting.",
+    contactLinkedinNote: "Opportunities, collaborations, and career conversations.",
+    contactGithubNote: "Open source, experiments, and everything I am building.",
     linkedin: "Talk on LinkedIn",
     github: "View GitHub",
+    footerTagline:
+      "Software engineer with a product mindset — architecture, DevOps, and applied intelligence, from design to operations.",
+    footerNavTitle: "Navigate",
+    footerEcosystemTitle: "Ecosystem",
+    footerContactTitle: "Contact",
+    footerInDevelopment: "In development",
     footer: "Designed and built with intent.",
   },
 } as const;
@@ -1212,55 +1237,201 @@ function Portfolio() {
           </div>
         </section>
 
-        <section id="contato" className="scroll-mt-20 border-t border-border py-24 sm:py-36">
-          <div className="page-shell">
+        <section
+          id="contato"
+          className="relative scroll-mt-20 overflow-hidden border-t border-border py-24 sm:py-36"
+        >
+          <div className="contact-glow pointer-events-none absolute inset-0" aria-hidden="true" />
+          <div className="page-shell relative">
             <p className="section-eyebrow">{copy.contactEyebrow}</p>
             <div className="mt-10 grid gap-14 lg:grid-cols-12 lg:items-end">
-              <h2 className="text-balance font-display text-5xl font-semibold leading-[0.98] sm:text-7xl lg:col-span-8">
-                {copy.contactTitle}
-              </h2>
-              <div className="lg:col-span-4">
-                <p className="text-muted-foreground">{copy.contactText}</p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <a
-                    href="mailto:an@thero.live"
-                    className="contact-link bg-accent text-accent-foreground"
-                  >
-                    <Mail size={17} />
-                    an@thero.live
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/anthero-vieira-neto-aa7a6b8a"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="contact-link border border-border"
-                  >
-                    <Linkedin size={17} />
-                    {copy.linkedin}
-                  </a>
-                  <a
-                    href="https://github.com/netovieira"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="contact-link border border-border"
-                  >
-                    <Github size={17} />
-                    {copy.github}
-                  </a>
+              <div className="lg:col-span-7">
+                <h2 className="text-balance font-display text-5xl font-semibold leading-[0.98] sm:text-7xl">
+                  {copy.contactTitle}
+                </h2>
+                <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs uppercase text-muted-foreground">
+                  <span className="inline-flex items-center gap-2.5">
+                    <span className="status-dot" aria-hidden="true" />
+                    {copy.contactAvailability}
+                  </span>
+                  <span className="inline-flex items-center gap-2.5">
+                    <Clock size={13} className="text-accent" aria-hidden="true" />
+                    {copy.contactResponse}
+                  </span>
                 </div>
+                <p className="mt-8 max-w-lg leading-relaxed text-muted-foreground">
+                  {copy.contactText}
+                </p>
+              </div>
+
+              <div className="lg:col-span-5">
+                <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                  {copy.contactChannelsTitle}
+                </p>
+                <ul className="mt-5 border-t border-border">
+                  <li>
+                    <a href="mailto:an@thero.live" className="contact-channel group">
+                      <span className="contact-channel-icon bg-accent text-accent-foreground">
+                        <Mail size={18} />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block font-display text-xl font-semibold">
+                          an@thero.live
+                        </span>
+                        <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">
+                          {copy.contactEmailNote}
+                        </span>
+                      </span>
+                      <ArrowUpRight
+                        size={18}
+                        className="ml-auto shrink-0 self-center text-muted-foreground transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/in/anthero-vieira-neto-aa7a6b8a"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="contact-channel group"
+                    >
+                      <span className="contact-channel-icon border border-border">
+                        <Linkedin size={18} />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block font-display text-xl font-semibold">
+                          {copy.linkedin}
+                        </span>
+                        <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">
+                          {copy.contactLinkedinNote}
+                        </span>
+                      </span>
+                      <ArrowUpRight
+                        size={18}
+                        className="ml-auto shrink-0 self-center text-muted-foreground transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/netovieira"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="contact-channel group"
+                    >
+                      <span className="contact-channel-icon border border-border">
+                        <Github size={18} />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block font-display text-xl font-semibold">
+                          {copy.github}
+                        </span>
+                        <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">
+                          {copy.contactGithubNote}
+                        </span>
+                      </span>
+                      <ArrowUpRight
+                        size={18}
+                        className="ml-auto shrink-0 self-center text-muted-foreground transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                      />
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-border bg-background py-10">
-        <div className="page-shell flex flex-col gap-5 text-[10px] uppercase text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-4">
-            <AvntMark />
-            <span>© {new Date().getFullYear()} Anthero Vieira Neto</span>
+      <footer className="border-t border-border bg-secondary/40">
+        <div className="page-shell grid gap-12 py-16 lg:grid-cols-12 lg:py-20">
+          <div className="lg:col-span-5">
+            <div className="flex items-center gap-4">
+              <AvntMark />
+              <span className="text-xs font-medium uppercase text-muted-foreground">
+                Anthero Vieira Neto
+              </span>
+            </div>
+            <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted-foreground">
+              {copy.footerTagline}
+            </p>
+            <a href="mailto:an@thero.live" className="text-link mt-6 inline-flex text-sm">
+              an@thero.live
+              <ArrowUpRight size={14} />
+            </a>
           </div>
-          <span>{copy.footer}</span>
+
+          <nav className="lg:col-span-3" aria-label={copy.footerNavTitle}>
+            <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+              {copy.footerNavTitle}
+            </p>
+            <ul className="mt-5 space-y-3">
+              {navItems.map(([label, href]) => (
+                <li key={href}>
+                  <a href={href} className="text-link text-sm text-foreground/85">
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="lg:col-span-4">
+            <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+              {copy.footerEcosystemTitle}
+            </p>
+            <ul className="mt-5 space-y-3">
+              {(
+                [
+                  ["Theroverse", "https://theroverse.github.io/"],
+                  ["TheroTV", "https://thero.live/"],
+                ] as const
+              ).map(([label, href]) => (
+                <li key={label}>
+                  <a href={href} target="_blank" rel="noreferrer" className="text-link text-sm">
+                    {label}
+                    <ArrowUpRight size={13} />
+                  </a>
+                </li>
+              ))}
+              <li className="flex items-center gap-2 text-sm text-muted-foreground/70">
+                CoreDrain
+                <span className="border border-border px-2 py-0.5 text-[9px] uppercase">
+                  {copy.footerInDevelopment}
+                </span>
+              </li>
+            </ul>
+            <ul className="mt-6 flex items-center gap-5">
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/anthero-vieira-neto-aa7a6b8a"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-link inline-flex items-center gap-2 text-sm text-muted-foreground"
+                >
+                  <Linkedin size={15} />
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/netovieira"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-link inline-flex items-center gap-2 text-sm text-muted-foreground"
+                >
+                  <Github size={15} />
+                  GitHub
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-border">
+          <div className="page-shell flex flex-col gap-3 py-6 text-[10px] uppercase text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+            <span>© {new Date().getFullYear()} Anthero Vieira Neto</span>
+            <span>{copy.footer}</span>
+          </div>
         </div>
       </footer>
     </>

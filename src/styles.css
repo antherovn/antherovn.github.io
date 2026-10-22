@@ -163,23 +163,43 @@
   }
 }
 
-@utility contact-link {
-  display: inline-flex;
-  min-height: 3rem;
+@utility contact-channel {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.65rem;
-  padding-inline: 1.1rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  transition:
-    transform 180ms ease,
-    filter 180ms ease;
+  gap: 1.1rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-block: 1.25rem;
+  transition: background 200ms ease;
 
   &:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.05);
+    background: color-mix(in oklab, var(--color-secondary) 55%, transparent);
   }
+}
+
+@utility contact-channel-icon {
+  display: flex;
+  height: 3rem;
+  width: 3rem;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-secondary);
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.contact-channel:hover .contact-channel-icon {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px color-mix(in oklab, var(--color-accent) 22%, transparent);
+}
+
+.contact-glow {
+  background: radial-gradient(
+    40rem 22rem at 78% 20%,
+    color-mix(in oklab, var(--color-accent) 8%, transparent),
+    transparent 70%
+  );
 }
 
 @utility technical-grid {
