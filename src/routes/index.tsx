@@ -3,18 +3,15 @@ import {
   ArrowDown,
   ArrowUpRight,
   Check,
-  Gamepad2,
   Github,
-  HardDrive,
   Linkedin,
+  Mail,
   Menu,
-  Radar,
-  Sparkles,
-  Terminal,
+  Play,
+  Users,
   X,
-  Zap,
 } from "lucide-react";
-import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 
 import portraitAsset from "@/assets/anthero-professional-portrait.png";
 import casualPortraitAsset from "@/assets/anthero-casual.jpeg";
@@ -23,6 +20,8 @@ import godSolarys from "@/assets/coredrain/god-solarys.jpg";
 import godSylvara from "@/assets/coredrain/god-sylvara.jpg";
 import godVorrath from "@/assets/coredrain/god-vorrath.jpg";
 import godVulkran from "@/assets/coredrain/god-vulkran.jpg";
+import theroTvAtmosfera from "@/assets/therotv/atmosfera.jpg";
+import theroTvFrame from "@/assets/therotv/app-frame.jpg";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -40,7 +39,9 @@ export const Route = createFileRoute("/")({
         content: "Engenharia de software, arquitetura, DevOps e IA aplicada a produtos reais.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "/og-anthero.png" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "/og-anthero.png" },
     ],
   }),
   component: Portfolio,
@@ -52,6 +53,7 @@ const content = {
   pt: {
     nav: {
       work: "Theroverse",
+      tv: "TheroTV",
       game: "CoreDrain",
       journey: "Trajetória",
       approach: "Como trabalho",
@@ -81,6 +83,32 @@ const content = {
       "Planetas autossustentáveis que protegem seus dados, naves que mapeiam código sem queimar tokens e inteligência de engenharia para blindar sua produção. Open source, local-first e 0% telemetria invasiva.",
     suiteCta: "Conhecer o Theroverse",
     suiteCtaHref: "https://theroverse.github.io/",
+    theroTvEyebrow: "02 — TheroTV",
+    theroTvTitle: "Cada um na sua tela. Todo mundo no mesmo ponto.",
+    theroTvText:
+      "Um app de entretenimento que reúne TV ao vivo, filmes, séries e doramas numa experiência única — com sala de cinema compartilhada, synchronized watch party, widget de continuidade e player próprio. Android, iOS e desktop.",
+    theroTvHref: "https://therotv.vercel.app/",
+    theroTvHighlights: [
+      {
+        label: "TV ao vivo & EPG",
+        text: "Canais agrupados por país e programação completa na palma da mão.",
+      },
+      {
+        label: "Catálogo sob demanda",
+        text: "Milhares de títulos com sinopse, elenco e favoritos sincronizados.",
+      },
+      {
+        label: "Sala de cinema",
+        text: "Assista com amigos em sincronia, com reações e bate-papo ao vivo.",
+      },
+      {
+        label: "Widget & multiplataforma",
+        text: "Continue de onde parou direto da tela inicial — Android, iOS e desktop.",
+      },
+    ],
+    theroTvChipLive: "Ao vivo",
+    theroTvChipContinue: "Continuar",
+    theroTvChipRoom: "Assistindo junto",
     products: [
       {
         name: "Thero",
@@ -128,7 +156,7 @@ const content = {
         href: "https://get-nexo.vercel.app/",
       },
     ],
-    coredrainEyebrow: "02 — Em desenvolvimento",
+    coredrainEyebrow: "03 — Em desenvolvimento",
     coredrainTitle: "CoreDrain",
     coredrainTagline: "Faça o mundo amadurecer... e beba o seu Coração.",
     coredrainText:
@@ -178,7 +206,7 @@ const content = {
         imageAlt: "Solarys, a deusa da luz do CoreDrain, asas douradas com halo radiante",
       },
     ],
-    privateEyebrow: "03 — Projetos privados",
+    privateEyebrow: "04 — Projetos privados",
     privateTitle: "Outros produtos em produção.",
     privateIntro:
       "Plataformas comerciais que arquitetiei e mantive em operação — disponíveis ao vivo.",
@@ -205,7 +233,7 @@ const content = {
         href: "https://system.cgc-energia.com.br/",
       },
     ],
-    journeyEyebrow: "04 — Trajetória",
+    journeyEyebrow: "05 — Trajetória",
     journeyTitle: "Construir, compreender, evoluir.",
     journeyIntro:
       "Minha carreira avançou junto com a escala dos problemas: do código à arquitetura, da infraestrutura à inteligência aplicada.",
@@ -231,7 +259,7 @@ const content = {
         text: "Criação independente de produtos que combinam engenharia profunda, visão de negócio e uma experiência simples para quem usa.",
       },
     ],
-    approachEyebrow: "05 — Como trabalho",
+    approachEyebrow: "06 — Como trabalho",
     approachTitle: "Decisões técnicas a serviço do produto.",
     principles: [
       {
@@ -261,7 +289,7 @@ const content = {
       "Plataformas SaaS",
       "Observabilidade",
     ],
-    contactEyebrow: "06 — Contato",
+    contactEyebrow: "07 — Contato",
     contactTitle: "Vamos construir algo que valha a pena?",
     contactText:
       "Estou sempre aberto a boas conversas sobre produtos ambiciosos, arquitetura de software e inteligência artificial aplicada.",
@@ -272,6 +300,7 @@ const content = {
   en: {
     nav: {
       work: "Theroverse",
+      tv: "TheroTV",
       game: "CoreDrain",
       journey: "Journey",
       approach: "How I work",
@@ -301,6 +330,29 @@ const content = {
       "Self-sustaining planets that protect your data, ships that map code without burning tokens, and engineering intelligence to shield your production. Open source, local-first, and 0% invasive telemetry.",
     suiteCta: "Explore Theroverse",
     suiteCtaHref: "https://theroverse.github.io/",
+    theroTvEyebrow: "02 — TheroTV",
+    theroTvTitle: "One screen each. Everyone in the same place.",
+    theroTvText:
+      "An entertainment app that brings live TV, movies, series, and doramas together in a single experience — with a shared cinema room, synchronized watch party, continuity widget, and its own player. Android, iOS, and desktop.",
+    theroTvHref: "https://therotv.vercel.app/",
+    theroTvHighlights: [
+      {
+        label: "Live TV & EPG",
+        text: "Channels grouped by country with full programming in the palm of your hand.",
+      },
+      {
+        label: "On-demand catalog",
+        text: "Thousands of titles with synopsis, cast, and synced favorites.",
+      },
+      { label: "Cinema room", text: "Watch with friends in sync, with live reactions and chat." },
+      {
+        label: "Widget & cross-platform",
+        text: "Pick up where you left off right from the home screen — Android, iOS, and desktop.",
+      },
+    ],
+    theroTvChipLive: "Live",
+    theroTvChipContinue: "Continue",
+    theroTvChipRoom: "Watching together",
     products: [
       {
         name: "Thero",
@@ -348,7 +400,7 @@ const content = {
         href: "https://get-nexo.vercel.app/",
       },
     ],
-    coredrainEyebrow: "02 — In development",
+    coredrainEyebrow: "03 — In development",
     coredrainTitle: "CoreDrain",
     coredrainTagline: "Make the world ripen... and drink its Heart.",
     coredrainText:
@@ -394,7 +446,7 @@ const content = {
         imageAlt: "Solarys, the CoreDrain light goddess, golden wings with a radiant halo",
       },
     ],
-    privateEyebrow: "03 — Private projects",
+    privateEyebrow: "04 — Private projects",
     privateTitle: "Other products in production.",
     privateIntro: "Commercial platforms I architected and kept in operation — live and available.",
     privateProjects: [
@@ -420,7 +472,7 @@ const content = {
         href: "https://system.cgc-energia.com.br/",
       },
     ],
-    journeyEyebrow: "04 — Journey",
+    journeyEyebrow: "05 — Journey",
     journeyTitle: "Build, understand, evolve.",
     journeyIntro:
       "My career has progressed alongside the scale of the problems: from code to architecture, from infrastructure to applied intelligence.",
@@ -446,7 +498,7 @@ const content = {
         text: "Independently building products that combine deep engineering, business judgment, and a simple user experience.",
       },
     ],
-    approachEyebrow: "05 — How I work",
+    approachEyebrow: "06 — How I work",
     approachTitle: "Technical decisions in service of the product.",
     principles: [
       {
@@ -476,7 +528,7 @@ const content = {
       "SaaS platforms",
       "Observability",
     ],
-    contactEyebrow: "06 — Contact",
+    contactEyebrow: "07 — Contact",
     contactTitle: "Shall we build something worthwhile?",
     contactText:
       "I am always open to thoughtful conversations about ambitious products, software architecture, and applied artificial intelligence.",
@@ -669,6 +721,7 @@ function Portfolio() {
 
   const navItems = [
     [copy.nav.work, "#projetos"],
+    [copy.nav.tv, "#therotv"],
     [copy.nav.game, "#coredrain"],
     [copy.nav.journey, "#trajetoria"],
     [copy.nav.approach, "#metodo"],
@@ -926,6 +979,54 @@ function Portfolio() {
           </div>
         </section>
 
+        <section id="therotv" className="relative scroll-mt-20 overflow-hidden py-24 sm:py-32">
+          <img
+            src={theroTvAtmosfera}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30"
+          />
+          <div className="therotv-glow pointer-events-none absolute inset-0" aria-hidden="true" />
+          <div className="page-shell relative grid gap-14 lg:grid-cols-12 lg:items-center">
+            <div className="order-2 lg:order-1 lg:col-span-7">
+              <TheroTvStage
+                chipLive={copy.theroTvChipLive}
+                chipContinue={copy.theroTvChipContinue}
+                chipRoom={copy.theroTvChipRoom}
+              />
+            </div>
+            <div className="order-1 lg:order-2 lg:col-span-5">
+              <p className="section-eyebrow">{copy.theroTvEyebrow}</p>
+              <h2 className="mt-6 max-w-md text-balance font-display text-4xl font-semibold leading-tight sm:text-5xl">
+                {copy.theroTvTitle}
+              </h2>
+              <p className="mt-5 max-w-md leading-relaxed text-muted-foreground">
+                {copy.theroTvText}
+              </p>
+              <dl className="mt-9 grid gap-x-8 gap-y-6 sm:grid-cols-2">
+                {copy.theroTvHighlights.map((item) => (
+                  <div key={item.label}>
+                    <dt className="text-xs font-semibold uppercase text-[#f5a141]">{item.label}</dt>
+                    <dd className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                      {item.text}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <a
+                href={copy.theroTvHref}
+                target="_blank"
+                rel="noreferrer"
+                className="text-link mt-9"
+              >
+                therotv.vercel.app
+                <ArrowUpRight size={15} />
+              </a>
+            </div>
+          </div>
+        </section>
+
         <section
           id="coredrain"
           className="scroll-mt-20 overflow-hidden border-y border-border bg-secondary/40 py-24 sm:py-32"
@@ -1122,10 +1223,17 @@ function Portfolio() {
                 <p className="text-muted-foreground">{copy.contactText}</p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
+                    href="mailto:an@thero.live"
+                    className="contact-link bg-accent text-accent-foreground"
+                  >
+                    <Mail size={17} />
+                    an@thero.live
+                  </a>
+                  <a
                     href="https://www.linkedin.com/in/anthero-vieira-neto-aa7a6b8a"
                     target="_blank"
                     rel="noreferrer"
-                    className="contact-link bg-accent text-accent-foreground"
+                    className="contact-link border border-border"
                   >
                     <Linkedin size={17} />
                     {copy.linkedin}
@@ -1156,6 +1264,102 @@ function Portfolio() {
         </div>
       </footer>
     </>
+  );
+}
+
+/** Palco do TheroTV: réplica do hero da landing — feixe de luz, marca se desenhando,
+ *  celular inclinável pelo ponteiro e chips de interface flutuando em profundidade. */
+function TheroTvStage({
+  chipLive,
+  chipContinue,
+  chipRoom,
+}: {
+  chipLive: string;
+  chipContinue: string;
+  chipRoom: string;
+}) {
+  const stage = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const node = stage.current;
+    if (!node) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(hover: hover)").matches) return;
+    let raf = 0;
+    let tx = 0;
+    let ty = 0;
+    const apply = () => {
+      raf = 0;
+      node.style.setProperty("--ry", `${tx * 14}deg`);
+      node.style.setProperty("--rx", `${ty * -10}deg`);
+      node.style.setProperty("--mx", String(tx));
+      node.style.setProperty("--my", String(ty));
+    };
+    const move = (e: PointerEvent) => {
+      const r = node.getBoundingClientRect();
+      tx = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width - 0.5) * 2));
+      ty = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height - 0.5) * 2));
+      if (!raf) raf = requestAnimationFrame(apply);
+    };
+    const leave = () => {
+      tx = 0;
+      ty = 0;
+      if (!raf) raf = requestAnimationFrame(apply);
+    };
+    window.addEventListener("pointermove", move, { passive: true });
+    document.addEventListener("pointerleave", leave);
+    return () => {
+      window.removeEventListener("pointermove", move);
+      document.removeEventListener("pointerleave", leave);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <div className="tv-stage" ref={stage} aria-label="Aplicativo TheroTV em um celular">
+      <div className="tv-beam" aria-hidden="true" />
+      <svg className="tv-mark" viewBox="0 0 220 220" aria-hidden="true">
+        <line className="tv-draw tv-d1" x1="14" y1="110" x2="206" y2="110" pathLength="1" />
+        <line className="tv-draw tv-d2" x1="24" y1="38" x2="206" y2="110" pathLength="1" />
+        <line className="tv-draw tv-d3" x1="24" y1="182" x2="206" y2="110" pathLength="1" />
+      </svg>
+
+      <div className="tv-float">
+        <div className="tv-phone">
+          <div className="tv-phone-body">
+            <img
+              src={theroTvFrame}
+              alt="Tela inicial do TheroTV com partida ao vivo e catálogo de filmes"
+            />
+            <span className="tv-glare" aria-hidden="true" />
+          </div>
+
+          <div className="tv-chip tv-chip-live" aria-hidden="true">
+            <span className="tv-chip-badge">{chipLive}</span>
+            <span>13:16 – 13:38</span>
+            <i className="tv-chip-bar">
+              <b />
+            </i>
+          </div>
+          <div className="tv-chip tv-chip-continue" aria-hidden="true">
+            <Play size={14} fill="currentColor" />
+            <span>{chipContinue}</span>
+            <i className="tv-chip-bar">
+              <b />
+            </i>
+          </div>
+          <div className="tv-chip tv-chip-room" aria-hidden="true">
+            <Users size={15} />
+            <span>{chipRoom}</span>
+            <span className="tv-chip-dots">
+              <i />
+              <i />
+              <i />
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
