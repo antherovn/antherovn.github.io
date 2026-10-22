@@ -87,7 +87,7 @@ const content = {
     theroTvTitle: "Cada um na sua tela. Todo mundo no mesmo ponto.",
     theroTvText:
       "Um app de entretenimento que reúne TV ao vivo, filmes, séries e doramas numa experiência única — com sala de cinema compartilhada, synchronized watch party, widget de continuidade e player próprio. Android, iOS e desktop.",
-    theroTvHref: "https://therotv.vercel.app/",
+    theroTvHref: "https://thero.live/",
     theroTvHighlights: [
       {
         label: "TV ao vivo & EPG",
@@ -334,7 +334,7 @@ const content = {
     theroTvTitle: "One screen each. Everyone in the same place.",
     theroTvText:
       "An entertainment app that brings live TV, movies, series, and doramas together in a single experience — with a shared cinema room, synchronized watch party, continuity widget, and its own player. Android, iOS, and desktop.",
-    theroTvHref: "https://therotv.vercel.app/",
+    theroTvHref: "https://thero.live/",
     theroTvHighlights: [
       {
         label: "Live TV & EPG",
@@ -1020,7 +1020,7 @@ function Portfolio() {
                 rel="noreferrer"
                 className="text-link mt-9"
               >
-                therotv.vercel.app
+                thero.live
                 <ArrowUpRight size={15} />
               </a>
             </div>
